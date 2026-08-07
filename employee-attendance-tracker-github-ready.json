@@ -1,0 +1,506 @@
+{
+  "updatedAt": "2026-08-07T20:01:18.483Z",
+  "createdAt": "2026-08-07T13:47:43.592Z",
+  "name": "Employee Attendance Tracker",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        -336
+      ],
+      "id": "c1c12ebd-8324-4c0f-8c5f-ed08a11f98aa",
+      "name": "Employee Attendance Register"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2f21e59a-5283-45f6-b4d2-36419e28c96a",
+              "name": "Employee ID",
+              "value": "UNIPORT001",
+              "type": "string"
+            },
+            {
+              "id": "ba2f7348-d41f-4725-b079-d7225139c405",
+              "name": "Employee Name",
+              "value": "Employee Name",
+              "type": "string"
+            },
+            {
+              "id": "32f1e81b-25c1-466b-8cc2-d29ff3196393",
+              "name": "Department",
+              "value": "ICT",
+              "type": "string"
+            },
+            {
+              "id": "54303e70-3020-4957-8c2b-87623ccba3e5",
+              "name": "Email",
+              "value": "employee@company.com",
+              "type": "string"
+            },
+            {
+              "id": "a8f5ea62-5303-490d-a14f-93ef10f4f4fb",
+              "name": "Date",
+              "value": "07-08-2026",
+              "type": "string"
+            },
+            {
+              "id": "c904f13c-6488-46e9-b8a0-1953440f2eed",
+              "name": "Check-in Time",
+              "value": "08:00AM",
+              "type": "string"
+            },
+            {
+              "id": "426e5a23-f2c5-4017-8a16-5de1a75654d1",
+              "name": "Status",
+              "value": "Present",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -576,
+        -256
+      ],
+      "id": "268a7ed3-bd84-4a76-a92f-592a3c775242",
+      "name": "Employee Details Node"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d1091069-5576-4c43-a2e3-1f5e42fabd97",
+              "name": "Before",
+              "value": "8:00",
+              "type": "string"
+            },
+            {
+              "id": "985d5af6-ddad-4634-8fe1-77b8f2151f1c",
+              "name": "After",
+              "value": "9:30",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -432,
+        -208
+      ],
+      "id": "d9589faf-6a06-47c7-8e10-c443e3016903",
+      "name": "Current Time"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b245498c-1979-4300-bea4-aa2bd21f1fed",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -272,
+        -144
+      ],
+      "id": "28baf687-f90b-4b80-849f-19b45256a778",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4126071b-e71e-40fd-bf28-7021b4bc0eb0",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -96,
+        -240
+      ],
+      "id": "f4f69dc6-2811-437c-b98e-8b71a8e6026e",
+      "name": "Present"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -112,
+        -48
+      ],
+      "id": "816a6a7e-90f7-4061-855e-ceb0868a3845",
+      "name": "Late"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Employee ID",
+              "displayName": "Employee ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Employee Name",
+              "displayName": "Employee Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Department",
+              "displayName": "Department",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Check-in Time",
+              "displayName": "Check-in Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        96,
+        -208
+      ],
+      "id": "e926b1b4-87e9-43d9-a32f-b2b630146294",
+      "name": "Append row in sheet"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Employee ID",
+              "displayName": "Employee ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Employee Name",
+              "displayName": "Employee Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Department",
+              "displayName": "Department",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Check-in Time",
+              "displayName": "Check-in Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        80,
+        -16
+      ],
+      "id": "c170ad0b-d9ba-4177-a545-20c3a52aeecb",
+      "name": "Append row in sheet1"
+    }
+  ],
+  "connections": {
+    "Employee Attendance Register": {
+      "main": [
+        [
+          {
+            "node": "Employee Details Node",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Employee Details Node": {
+      "main": [
+        [
+          {
+            "node": "Current Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Current Time": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Present",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Late",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Present": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Late": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {},
+  "versionCounter": 139,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-08-07T13:47:43.605Z",
+      "createdAt": "2026-08-07T13:47:43.605Z",
+      "role": "workflow:owner",
+      "workflowId": "2tCKfmYFh8TgP6mJ",
+      "projectId": "JWZOpZhrpjGyPdKj",
+      "project": {
+        "updatedAt": "2026-07-31T13:56:00.214Z",
+        "createdAt": "2026-07-31T13:23:39.235Z",
+        "name": "Employee Attendance Automation",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "74de3445-bb05-4287-bb55-c6c80f96d434"
+      }
+    }
+  ],
+  "tags": [],
+  "parentFolder": null,
+  "activeVersion": null,
+  "scopes": [
+    "execution:reveal",
+    "workflow:create",
+    "workflow:delete",
+    "workflow:disableRedaction",
+    "workflow:enableRedaction",
+    "workflow:execute",
+    "workflow:execute-chat",
+    "workflow:export",
+    "workflow:import",
+    "workflow:list",
+    "workflow:move",
+    "workflow:publish",
+    "workflow:read",
+    "workflow:share",
+    "workflow:unpublish",
+    "workflow:unshare",
+    "workflow:update"
+  ]
+}
